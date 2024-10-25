@@ -33,5 +33,9 @@ def get_file_names_in_folder(folder_path):
     file_names = []
     for root, dirs, files in os.walk(folder_path):
         for file in files:
-            file_names.append(file)  # Append only the file name
+            name, ext = os.path.splitext(file)
+            if ext == '.zip':
+                file_names.append(name)  # Append the file name without '.zip'
+            else:
+                file_names.append(file)  # Append the full file name
     return file_names
